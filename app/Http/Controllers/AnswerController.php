@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Log;
+use App\Jobs\SendAnswerEmail;
 
 
 class AnswerController extends Controller
@@ -58,9 +60,13 @@ class AnswerController extends Controller
         $Answer->question()->associate($question);
         $Answer->save();
 
-        $recipient = 'steven@example.com';
+        //$recipient = 'steven@example.com';
 
-        Mail::to($recipient)->send(new QuestionAnswered($Answer));
+        //Mail::to($recipient)->send(new QuestionAnswered($Answer));
+
+        SendAnswerEmail::dispatch($Answer);
+
+        Log::info('Dispatched new answer ' . $Answer->id);
 
 
         return redirect()->route('question.show',['question_id' => $question->id])->with('message', 'Saved');
