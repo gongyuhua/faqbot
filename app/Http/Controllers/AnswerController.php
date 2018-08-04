@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Mail\QuestionAnswered;
 use App\Question;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class AnswerController extends Controller
 {
@@ -54,6 +57,11 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
+
+        $recipient = 'steven@example.com';
+
+        Mail::to($recipient)->send(new QuestionAnswered($Answer));
+
 
         return redirect()->route('question.show',['question_id' => $question->id])->with('message', 'Saved');
     }
