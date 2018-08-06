@@ -51,5 +51,3 @@ Route::resources([
     'question' => 'QuestionController',
 ]);
 
-
-

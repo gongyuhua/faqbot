@@ -121,9 +121,10 @@ class AnswerController extends Controller
         $answer->body = $request->body;
         $answer->save();
 
-        return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
+        return redirect()->route('answers.show', ['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
 
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -139,5 +140,13 @@ class AnswerController extends Controller
         return redirect()->route('question.show',['question_id' => $question])->with('message', 'Delete');
 
     }
+   /* public function index($question, $Answer){
+        $Answer = Answer::find($Answer);
+        SendAnswerEmail::dispatch($Answer);
+
+        Log::info('Dispatched new answer ' . $Answer->id);
+
+
+    }  */
 }
 
