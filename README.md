@@ -1,7 +1,10 @@
+Introduction:
+
 This project is based on the Faqbot project.
 Faqbot project link: https://github.com/NJIT-WIS/faqbot
 
 Below process is for Docker CE, If you use Docker ToolBox,please go to docker tutorial:https://github.com/NJIT-WIS/faqbot/wiki/Docker-Tutorial-New#docker
+
 
 Running requirement:
 $ git clone https://github.com/gongyuhua/faqbot.git
@@ -20,6 +23,8 @@ Project PHP container:
 
 alias faqphp='docker exec -w /code faqbot_php_1'
 Aliases can be saved into ~/.bashrc for future use.
+
+Running steps:
 
 Step 1
 Make .env.docker your default .env
@@ -72,8 +77,14 @@ To test whether or not you have a functional project, run the unit tests:
 
 $ faqphp ./vendor/bin/phpunit
 
+
+Display:
+
 Create a free account at : https://mailtrap.io/
 copy and paste the smtp credentials to .env (mail_username and mail_password)
 run faqphp php artisan queue:work in your terminal 
 
 Then go to http://localhost, post a new answer and save, then you will see new email in mailtrap.
+
+
+
