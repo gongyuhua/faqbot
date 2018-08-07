@@ -15,6 +15,7 @@ Enter the aliases into your bash terminal as-is
 Bash alias for Composer:
 
 alias composer='docker run --rm -v `pwd`:/app composer'
+
 PHP:
 
 alias php='docker run --rm -v `pwd`:/p -w /p php:7-fpm-alpine php'
