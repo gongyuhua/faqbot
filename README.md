@@ -69,9 +69,13 @@ Artisan commands
 Once the containers are running, in either the foreground or background, execute the following artisan commands in your repo directory.
 
 $ faqphp php artisan migrate
+
 $ faqphp php artisan elastic:create-index App\\QuestionIndexConfigurator
+
 $ faqphp php artisan elastic:create-index App\\TagIndexConfigurator
+
 $ faqphp php artisan db:seed
+
 After executing those commands, you should have a functional project.
 
 To test whether or not you have a functional project, run the unit tests:
